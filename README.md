@@ -2,8 +2,15 @@
 
 This project contains a simple C++ implementation of the Black-Scholes model for pricing European call and put options. The implementation calculates various option Greeks and other relevant parameters.
 
+## Notes
+
+- This implementation uses an approximation for the error function (erf), which might introduce minor inaccuracies in the cumulative standard normal distribution calculation.
+- The program assumes the input parameters are valid and does not include extensive error handling.
+- Feel free to modify/extend!
+  
 ## Features
 
+- Models the underlying using Monte-Carlo strategy
 - Calculates the premium of European call and put options.
 - Computes option Greeks: Delta, Gamma, Theta, Vega, and Rho.
 - Calculates the implied volatility.
@@ -64,48 +71,4 @@ make
 3. Run the executable (e.g., `./OptionPricingDemo`)
 
 ---
-
-## Code Structure
-
-- **main.cpp**: Contains the main implementation of the Black-Scholes model, option pricing functions, and the `main` function for execution.
-
-### Key Functions
-
-#### `double erf(double x)`
-
-Approximates the error function, which is used in the calculation of the cumulative standard normal distribution.
-
-#### `double cumulativeStandardNormal(double x)`
-
-Computes the cumulative standard normal density function.
-
-#### `Contract blackScholesOptionPricing(double S0, double K, double r, double sigma, double T, bool isCallOption)`
-
-Calculates the option price and Greeks for a given set of parameters:
-- `S0`: Initial stock price
-- `K`: Strike price
-- `r`: Risk-free interest rate
-- `sigma`: Volatility of the stock
-- `T`: Time to maturity (in years)
-- `isCallOption`: Boolean flag indicating whether the option is a call option (`true`) or a put option (`false`)
-
-### Contract Struct
-
-The `Contract` struct holds the results of the option pricing calculations:
-- `double premium`
-- `int dte` (days till expiry)
-- `double delta`
-- `double gamma`
-- `double theta`
-- `double vega`
-- `double rho`
-- `double implied_volatility`
-- `double intrinsic_value`
-
-## Notes
-
-- This implementation uses an approximation for the error function (erf) which might introduce minor inaccuracies in the cumulative standard normal distribution calculation.
-- The program assumes the input parameters are valid and does not include extensive error handling.
-
-
-Feel free to modify and extend the code to suit your needs. Happy coding!
+Thanks!
